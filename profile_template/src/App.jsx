@@ -160,6 +160,39 @@ const SideMenu = () => {
   );
 };
 
+
+const FilterSwitch = () => {
+  const containerRef = useRef();
+
+  const [tabIndicatorStyles, setTabIndicatorStyles]  = useState({});
+  const [activeTab, setActiveTab] = useState(null);
+
+  const onActiveTabClick = (evt, opt) => {
+    const { width, left } = evt.target.getBoundingClientRect();
+    const currentLeft = (opt == 1) ? 0 : (containerRef.current.getBoundingClientRect().width - width);
+    setTabIndicatorStyles({width: `${width}px`, left: `${currentLeft}px`});
+    setActiveTab(opt);
+  };
+
+  useEffect(() => {
+    setTabIndicatorStyles({
+      width: containerRef.current.firstChild.getBoundingClientRect().width + 'px'
+    })
+  }, []);
+
+  return(<div ref={containerRef} className="relative flex text-sm font-semibold bg-gray-200 rounded-md">
+    <div className="z-20 py-2 px-4 cursor-pointer" onClick={(evt) => onActiveTabClick(evt, 1)}> Popular </div>
+    <div className="z-20 py-2 px-4 cursor-pointer" onClick={(evt) => onActiveTabClick(evt, 2)}> Recent </div>
+    <div style={ tabIndicatorStyles } className="absolute top-0 left-0 z-10 h-full bg-orange-600 rounded-md transition-all ease-in duration-50"></div>
+  </div>);
+};
+
+const SubTabs = () => {
+  return(
+    <p>Active tabs</p>
+  );
+};
+
 const MainContent = () => {
   return(
     <div className=" bg-gray-100 w-full h-screen pt-16 px-28">
@@ -177,6 +210,11 @@ const MainContent = () => {
         </div>
 
         <div>Friends</div>
+      </div>
+
+      <div className="flex flex-row justify-between flex-auto">
+        <SubTabs />
+        <FilterSwitch />
       </div>
     </div>
   );
