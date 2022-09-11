@@ -33,7 +33,9 @@ const menuItems = [
 
 const MenuList = ({items, menuRef}) => {
   const decoratorSize = 24;
+
   const refs = useRef([]);
+  const [windowHeight, setWindowHeight] = useState(0);
 
   const [activeIdx, setActiveIdx] = useState(2);
   const [currentItem, setCurrentItem] = useState(null);
@@ -48,7 +50,7 @@ const MenuList = ({items, menuRef}) => {
     setActiveIdx(index);
   }
 
-  useEffect(() => {
+  const configTabItems = () => {
     if(!currentItem) return;
 
     const { left, top, bottom, height } = currentItem.getBoundingClientRect();
@@ -67,18 +69,31 @@ const MenuList = ({items, menuRef}) => {
       top: `${top}px`,
       left: `${left}px`,
     });
+  };
 
-  }, [currentItem]);
+  const windowSizeListener = () => {
+    setWindowHeight(window.innerHeight);
+  };
+
+  useEffect(() => {
+    configTabItems();
+ }, [currentItem, windowHeight]);
 
 
   useEffect(() => {
     setCurrentItem(refs.current[activeIdx]);
+    window.addEventListener("resize", windowSizeListener);
+
+    return () => {
+      window.removeEventListener("resize", windowSizeListener);
+    };
+
   }, []);
 
 
   return (
     <>
-      <ul className="flex flex-col gap-4 my-auto z-20">
+      <ul className="flex flex-col my-auto gap-4 z-20">
         {items.map((item, idx) => {
           return (
             <li
