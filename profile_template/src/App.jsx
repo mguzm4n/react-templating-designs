@@ -51,32 +51,34 @@ const MenuList = ({items, menuRef}) => {
   useEffect(() => {
     if(!currentItem) return;
 
-    
+    const { left, top, bottom, height } = currentItem.getBoundingClientRect();
     const menuCurrWidth = menuRef.current.getBoundingClientRect().right;
-    const itemCurrRight = currentItem.getBoundingClientRect().right;
 
-    const boxHeight = currentItem.getBoundingClientRect().height;
-    const boxWidth = menuCurrWidth - itemCurrRight; 
+    const boxWidth = menuCurrWidth - left; 
 
-    const currentTop = currentItem.getBoundingClientRect().top;
-    const currentBtm = currentItem.getBoundingClientRect().bottom;
+    const currentTop = top - decoratorSize;
     const currentLeft = menuCurrWidth - decoratorSize;
   
-    setTopDecoratorPositions({top: `${currentTop - decoratorSize}px`, left: `${currentLeft}px`});
-    setBtmDecoratorPositions({top: `${currentBtm}px`, left: `${currentLeft}px`});
+    setTopDecoratorPositions({ top: `${currentTop}px`, left: `${currentLeft}px` });
+    setBtmDecoratorPositions({ top: `${bottom}px`, left: `${currentLeft}px` });
     setBoxDecoratorStyles({
       width: `${boxWidth}px`, 
-      height: `${boxHeight}px`,
-      top: `${currentTop}px`,
-      left: `${itemCurrRight}px`,
+      height: `${height}px`,
+      top: `${top}px`,
+      left: `${left}px`,
     });
 
   }, [currentItem]);
 
 
+  useEffect(() => {
+    setCurrentItem(refs.current[activeIdx]);
+  }, []);
+
+
   return (
     <>
-      <ul className="flex flex-col gap-4 my-auto">
+      <ul className="flex flex-col gap-4 my-auto z-20">
         {items.map((item, idx) => {
           return (
             <li
@@ -86,8 +88,11 @@ const MenuList = ({items, menuRef}) => {
               }}
               onClick={() => onActiveItemClick(refs.current[idx], idx)}
               className={`${
-                idx == activeIdx ? "bg-gray-100" : ""
-              } cursor-pointer flex flex-row gap-2 py-2 px-4 justify-start items-center rounded-l-2xl`}
+                ( idx == activeIdx )
+                ? 'text-orange-600'
+                : ''
+              }
+              cursor-pointer flex flex-row gap-2 py-2 px-4 justify-start items-center`}
             >
               {item.icon}
               <p className="font-bold text-2xl tracking-wide">{item.name}</p>
@@ -95,15 +100,15 @@ const MenuList = ({items, menuRef}) => {
           );
         })}
       </ul>
-      <div className="absolute w-6 h-6" style={ topDecoratorPositions }>
+      <div className="absolute w-6 h-6 transition-all ease-in-out duration-75" style={ topDecoratorPositions }>
         <svg className="fill-gray-100" viewBox="0 0 7 7"><path d="M 7 7 V 0 M 7 7 H 0 Q 6 6 7 0 Z"></path></svg>
       </div>
 
-      <div className="absolute w-6 h-6 -rotate-90" style={ btmDecoratorPositions }>
+      <div className="absolute w-6 h-6 -rotate-90 transition-all ease-in-out duration-75" style={ btmDecoratorPositions }>
         <svg className="fill-gray-100" viewBox="0 0 7 7"><path d="M 7 7 V 0 M 7 7 H 0 Q 6 6 7 0 Z"></path></svg>
       </div>
 
-      <div className="absolute bg-gray-100" style={ boxDecoratorStyles }></div>
+      <div className="z-10 absolute bg-gray-100 rounded-l-2xl transition-all ease-in-out duration-75" style={ boxDecoratorStyles }></div>
     </>
   );
 };
