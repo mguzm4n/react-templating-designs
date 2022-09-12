@@ -33,7 +33,7 @@ const menuItems = [
 
 const subMenuTabTitles = ["All", "Videos", "Notes", "To-do-list"];
 
-const MenuList = ({items, menuRef}) => {
+const MenuList = ({ items, menuRef }) => {
   const decoratorSize = 24;
 
   const refs = useRef([]);
@@ -117,15 +117,15 @@ const MenuList = ({items, menuRef}) => {
           );
         })}
       </ul>
-      <div className="absolute w-6 h-6 transition-all ease-in-out duration-75" style={ topDecoratorPositions }>
+      <div className="absolute w-6 h-6 transition-all ease-in-out duration-500" style={ topDecoratorPositions }>
         <svg className="fill-gray-100" viewBox="0 0 7 7"><path d="M 7 7 V 0 M 7 7 H 0 Q 6 6 7 0 Z"></path></svg>
       </div>
 
-      <div className="absolute w-6 h-6 -rotate-90 transition-all ease-in-out duration-75" style={ btmDecoratorPositions }>
+      <div className="absolute w-6 h-6 -rotate-90 transition-all ease-in-out duration-500" style={ btmDecoratorPositions }>
         <svg className="fill-gray-100" viewBox="0 0 7 7"><path d="M 7 7 V 0 M 7 7 H 0 Q 6 6 7 0 Z"></path></svg>
       </div>
 
-      <div className="z-10 absolute bg-gray-100 rounded-l-2xl transition-all ease-in-out duration-150" style={ boxDecoratorStyles }></div>
+      <div className="z-10 absolute bg-gray-100 rounded-l-2xl transition-all ease-in-out duration-500" style={ boxDecoratorStyles }></div>
     </>
   );
 };
@@ -221,10 +221,28 @@ const SubTabs = () => {
   </>);
 };
 
+const CardsView = () => {
+  const columns = 3;
+  return(<div className="flex gap-6">
+    <div className="flex flex-col gap-6">
+      <div className="rounded-2xl bg-orange-600 w-48 h-72"></div>
+      <div className="rounded-2xl bg-slate-800 w-48 h-36"></div>
+    </div>
+    <div className="flex flex-col gap-6">
+      <div className="rounded-2xl bg-yellow-300 w-48 h-60"></div>
+      <div className="rounded-2xl bg-blue-400 w-48 h-52"></div>
+    </div>
+    <div className="flex flex-col gap-6">
+      <div className="rounded-2xl bg-slate-800 w-48 h-40"></div>
+      <div className="rounded-2xl bg-teal-400 w-48 h-64"></div>
+    </div>
+  </div>)
+};
+
 const MainContent = () => {
   return(
-    <div className=" bg-gray-100 w-full h-screen pt-16 px-28">
-      <div className="flex justify-between">
+    <div className=" bg-gray-100 w-full h-screen pt-16 pr-28 pl-20">
+      <div className="flex justify-between items-center">
         <p className="text-orange-600 font-bold text-3xl tracking-wide">Design</p>
 
         <div className="flex justify-between bg-white items-center py-2 px-3 rounded-xl w-80">
@@ -237,13 +255,25 @@ const MainContent = () => {
           </div>
         </div>
 
-        <div>Friends</div>
+        <div className="flex -space-x-1.5">
+          <div className="w-7 h-7 rounded-full bg-pink-300"></div>
+          <div className="w-7 h-7 rounded-full bg-teal-400"></div>
+          <div className="w-7 h-7 rounded-full bg-teal-700"></div>
+          <div className="w-7 h-7 rounded-full bg-yellow-300"></div>
+          <div className="w-7 h-7 rounded-full bg-gray-700 flex items-center justify-center">
+            <svg className="cursor-pointer text-white w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          </div>
+        </div>
       </div>
 
       <div className="flex flex-row justify-between flex-auto my-12">
         <SubTabs />
         <FilterSwitch />
       </div>
+
+      <CardsView />
     </div>
   );
 };
