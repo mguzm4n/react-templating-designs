@@ -2,12 +2,12 @@ import { useState, useRef, useEffect } from 'react'
 
 const menuItems = [
   {
-    icon: <svg className="w-4 h-4" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 40.656 40.656" xmlSpace="preserve"><g><path d="M29.276,19.278c1.054,1.052,1.054,2.761,0,3.814L12.518,39.851c-0.506,0.506-1.192,0.791-1.908,0.791 c-0.008,0-0.017,0-0.025,0l-7.838-0.072c-1.472-0.015-2.661-1.203-2.673-2.674L0,30.056c-0.006-0.726,0.278-1.421,0.791-1.934 l16.758-16.757c1.053-1.054,2.763-1.054,3.816,0L29.276,19.278z M39.866,8.688l-7.913-7.913c-1.013-1.013-2.805-1.013-3.815,0 L26.872,2.04c-0.506,0.506-0.791,1.192-0.791,1.908c0,0.715,0.285,1.402,0.791,1.908l7.913,7.913 c0.525,0.527,1.217,0.791,1.908,0.791c0.69,0,1.382-0.264,1.907-0.791l1.266-1.265C40.92,11.451,40.92,9.742,39.866,8.688z M26.071,6.658c-1.054-1.054-2.764-1.054-3.816,0c-1.054,1.053-1.054,2.762,0,3.815l7.912,7.913 c0.527,0.527,1.22,0.791,1.908,0.791c0.691,0,1.382-0.263,1.907-0.791c1.055-1.053,1.055-2.762,0-3.815L26.071,6.658z"/></g></svg>
+    icon: <svg className="w-4 h-4" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 40.656 40.656" fill="currentColor" xmlSpace="preserve"><g><path d="M29.276,19.278c1.054,1.052,1.054,2.761,0,3.814L12.518,39.851c-0.506,0.506-1.192,0.791-1.908,0.791 c-0.008,0-0.017,0-0.025,0l-7.838-0.072c-1.472-0.015-2.661-1.203-2.673-2.674L0,30.056c-0.006-0.726,0.278-1.421,0.791-1.934 l16.758-16.757c1.053-1.054,2.763-1.054,3.816,0L29.276,19.278z M39.866,8.688l-7.913-7.913c-1.013-1.013-2.805-1.013-3.815,0 L26.872,2.04c-0.506,0.506-0.791,1.192-0.791,1.908c0,0.715,0.285,1.402,0.791,1.908l7.913,7.913 c0.525,0.527,1.217,0.791,1.908,0.791c0.69,0,1.382-0.264,1.907-0.791l1.266-1.265C40.92,11.451,40.92,9.742,39.866,8.688z M26.071,6.658c-1.054-1.054-2.764-1.054-3.816,0c-1.054,1.053-1.054,2.762,0,3.815l7.912,7.913 c0.527,0.527,1.22,0.791,1.908,0.791c0.691,0,1.382-0.263,1.907-0.791c1.055-1.053,1.055-2.762,0-3.815L26.071,6.658z"/></g></svg>
  ,
     name: "Design",
   },
   { 
-    icon: <svg className="w-6 h-6" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M193.69,152.84a16,16,0,0,1,29.64,2.56l36.4,121.36,30-59.92a16,16,0,0,1,28.62,0L345.89,272h96.76A213.08,213.08,0,0,0,464,176.65C463.37,114.54,413.54,64,352.92,64c-48.09,0-80,29.54-96.92,51-16.88-21.49-48.83-51-96.92-51C98.46,64,48.63,114.54,48,176.65A211.13,211.13,0,0,0,56.93,240h93.18Z"/><path d="M321.69,295.16,304,259.78l-33.69,67.38A16,16,0,0,1,256,336q-.67,0-1.38-.06a16,16,0,0,1-14-11.34l-36.4-121.36-30,59.92A16,16,0,0,1,160,272H69.35q14,29.29,37.27,57.66c18.77,22.88,52.8,59.46,131.39,112.81a31.84,31.84,0,0,0,36,0c78.59-53.35,112.62-89.93,131.39-112.81a316.79,316.79,0,0,0,19-25.66H336A16,16,0,0,1,321.69,295.16Z"/><path d="M464,272H442.65a260.11,260.11,0,0,1-18.25,32H464a16,16,0,0,0,0-32Z"/><path d="M48,240a16,16,0,0,0,0,32H69.35a225.22,225.22,0,0,1-12.42-32Z"/></svg>, 
+    icon: <svg className="w-6 h-6" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M193.69,152.84a16,16,0,0,1,29.64,2.56l36.4,121.36,30-59.92a16,16,0,0,1,28.62,0L345.89,272h96.76A213.08,213.08,0,0,0,464,176.65C463.37,114.54,413.54,64,352.92,64c-48.09,0-80,29.54-96.92,51-16.88-21.49-48.83-51-96.92-51C98.46,64,48.63,114.54,48,176.65A211.13,211.13,0,0,0,56.93,240h93.18Z"/><path d="M321.69,295.16,304,259.78l-33.69,67.38A16,16,0,0,1,256,336q-.67,0-1.38-.06a16,16,0,0,1-14-11.34l-36.4-121.36-30,59.92A16,16,0,0,1,160,272H69.35q14,29.29,37.27,57.66c18.77,22.88,52.8,59.46,131.39,112.81a31.84,31.84,0,0,0,36,0c78.59-53.35,112.62-89.93,131.39-112.81a316.79,316.79,0,0,0,19-25.66H336A16,16,0,0,1,321.69,295.16Z"/><path d="M464,272H442.65a260.11,260.11,0,0,1-18.25,32H464a16,16,0,0,0,0-32Z"/><path d="M48,240a16,16,0,0,0,0,32H69.35a225.22,225.22,0,0,1-12.42-32Z"/></svg>, 
     name: "Fitness" 
   },
   { 
@@ -15,11 +15,11 @@ const menuItems = [
     name: "Books" 
   },
   { 
-    icon: <svg className="w-5 h-5" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" xmlSpace="preserve"><g><path d="M150,0C67.29,0,0,67.29,0,150s67.29,150,150,150s150-67.29,150-150S232.71,0,150,0z M150,270c-66.168,0-120-53.832-120-120 S83.832,30,150,30s120,53.832,120,120S216.168,270,150,270z"/><path d="M195.031,75.387C183.477,66.802,169.331,65,159.5,65h-38.846c-5.522,0-10,4.478-10,10v150c0,5.523,4.478,10,10,10h7.691 c5.522,0,10-4.477,10-10v-53.46H159.5c9.831,0,23.977-1.802,35.531-10.388c8.355-6.207,18.314-18.352,18.314-40.961v-3.843 C213.346,93.739,203.387,81.594,195.031,75.387z M185.27,119.809c0,10.484-2.671,24.424-25.77,24.424h-21.154V92.308H159.5 c23.099,0,25.77,13.939,25.77,24.424V119.809z"/></g></svg>, 
+    icon: <svg className="w-5 h-5" viewBox="0 0 300 300" fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" xmlSpace="preserve"><g><path d="M150,0C67.29,0,0,67.29,0,150s67.29,150,150,150s150-67.29,150-150S232.71,0,150,0z M150,270c-66.168,0-120-53.832-120-120 S83.832,30,150,30s120,53.832,120,120S216.168,270,150,270z"/><path d="M195.031,75.387C183.477,66.802,169.331,65,159.5,65h-38.846c-5.522,0-10,4.478-10,10v150c0,5.523,4.478,10,10,10h7.691 c5.522,0,10-4.477,10-10v-53.46H159.5c9.831,0,23.977-1.802,35.531-10.388c8.355-6.207,18.314-18.352,18.314-40.961v-3.843 C213.346,93.739,203.387,81.594,195.031,75.387z M185.27,119.809c0,10.484-2.671,24.424-25.77,24.424h-21.154V92.308H159.5 c23.099,0,25.77,13.939,25.77,24.424V119.809z"/></g></svg>, 
     name: "Products" 
   },
   { 
-    icon: <svg className="w-5 h-5" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg" id="restaurant-bbq"><path d="M12.0166,12.5H14.5L12,15V12.5165a1.6189,1.6189,0,0,1-1.1367.4806,1.6,1.6,0,0,1-.9931-.3448A6.7838,6.7838,0,0,1,9.8783,2.3418,1.6179,1.6179,0,0,1,12,2.462V0l2.5,2.5H12.036a1.5927,1.5927,0,0,1,.1225.1289,1.6239,1.6239,0,0,1-.2871,2.2793A3.5148,3.5148,0,0,0,10.75,7.4951a3.5578,3.5578,0,0,0,1.1465,2.6162,1.6352,1.6352,0,0,1,.2325,2.2783C12.0949,12.4315,12.0535,12.4624,12.0166,12.5ZM2.504,0l-1,5.5c-.1464.805,1.7815,1.181,1.75,2L3.004,14a.9625.9625,0,0,0,1,1,.9625.9625,0,0,0,1-1l-.25-6.5c-.0314-.8176,1.7334-1.1808,1.75-2l-1-5.5h-.5l.25,4-.75.5L4.254,0h-.5l-.25,4.5L2.754,4l.25-4Z"/></svg>, 
+    icon: <svg className="w-5 h-5" viewBox="0 0 15 15" fill="currentColor" xmlns="http://www.w3.org/2000/svg" id="restaurant-bbq"><path d="M12.0166,12.5H14.5L12,15V12.5165a1.6189,1.6189,0,0,1-1.1367.4806,1.6,1.6,0,0,1-.9931-.3448A6.7838,6.7838,0,0,1,9.8783,2.3418,1.6179,1.6179,0,0,1,12,2.462V0l2.5,2.5H12.036a1.5927,1.5927,0,0,1,.1225.1289,1.6239,1.6239,0,0,1-.2871,2.2793A3.5148,3.5148,0,0,0,10.75,7.4951a3.5578,3.5578,0,0,0,1.1465,2.6162,1.6352,1.6352,0,0,1,.2325,2.2783C12.0949,12.4315,12.0535,12.4624,12.0166,12.5ZM2.504,0l-1,5.5c-.1464.805,1.7815,1.181,1.75,2L3.004,14a.9625.9625,0,0,0,1,1,.9625.9625,0,0,0,1-1l-.25-6.5c-.0314-.8176,1.7334-1.1808,1.75-2l-1-5.5h-.5l.25,4-.75.5L4.254,0h-.5l-.25,4.5L2.754,4l.25-4Z"/></svg>, 
     name: "Barbeque" 
   },
 ];
@@ -33,6 +33,15 @@ const menuItems = [
 
 const subMenuTabTitles = ["All", "Videos", "Notes", "To-do-list"];
 
+const ThemeSwitch = () => {
+  const [isOn, setIsOn] = useState(false);
+
+  return (<div 
+      onClick={() => setIsOn(!isOn)}
+      className={`${isOn ? 'bg-orange-600' : 'bg-green-400'} relative w-9 h-5 py-1 px-[6px] rounded-md cursor-pointer transition-colors ease-in duration-70`}>
+    <div className={`${isOn ? 'animate-switch' : 'animate-switchBack'} absolute h-3 w-[6px] bg-white rounded-md`}></div>
+  </div>);
+}
 const MenuList = ({ items, menuRef }) => {
   const decoratorSize = 24;
 
@@ -107,12 +116,12 @@ const MenuList = ({ items, menuRef }) => {
               className={`${
                 ( idx == activeIdx )
                 ? 'text-orange-600'
-                : ''
+                : 'text-gray-400'
               }
-              cursor-pointer flex flex-row gap-2 py-2 px-4 justify-start items-center`}
+              cursor-pointer flex flex-row gap-2 py-2 px-4 justify-start items-center transition-all ease-in duration-100`}
             >
               {item.icon}
-              <p className="font-bold text-2xl tracking-wide">{item.name}</p>
+              <p className="font-normal text-2xl tracking-wide">{item.name}</p>
             </li>
           );
         })}
@@ -152,10 +161,8 @@ const SideMenu = () => {
       <MenuList menuRef={menuRef} items={menuItems} />
 
       <div className="flex justify-center gap-4 mt-auto items-center">
-        <p className="text-md font-extrabold tracking-wider">Dark mode</p>
-        <div className="w-9 h-5 py-1 px-[6px] bg-green-400 rounded-md cursor-pointer">
-          <div className="h-3 w-[6px] bg-white rounded-md"></div>
-        </div>
+        <p className="text-md text-gray-400 font-extrabold tracking-wider">Dark mode</p>
+        <ThemeSwitch />
       </div>
 
     </div>
@@ -182,9 +189,9 @@ const FilterSwitch = () => {
     })
   }, []);
 
-  return(<div ref={containerRef} className="relative flex text-sm h-min font-semibold bg-gray-200 rounded-xl">
-    <div className={`${activeTab == 1 ? 'text-white' : 'text-gray-500'} z-20 py-2 px-4 cursor-pointer`} onClick={(evt) => onActiveTabClick(evt, 1)}> Popular </div>
-    <div className={`${activeTab == 2 ? 'text-white' : 'text-gray-500'} z-20 py-2 px-4 cursor-pointer`} onClick={(evt) => onActiveTabClick(evt, 2)}> Recent </div>
+  return(<div ref={containerRef} className="relative flex text-sm h-min font-semibold bg-gray-200 rounded-xl tracking-wide">
+    <div className={`${activeTab == 1 ? 'text-white font-normal' : 'text-gray-500'} z-20 py-2 px-4 cursor-pointer`} onClick={(evt) => onActiveTabClick(evt, 1)}> Popular </div>
+    <div className={`${activeTab == 2 ? 'text-white font-normal' : 'text-gray-500'} z-20 py-2 px-4 cursor-pointer`} onClick={(evt) => onActiveTabClick(evt, 2)}> Recent </div>
     <div style={ tabIndicatorStyles } className="absolute top-0 left-0 z-10 h-full bg-orange-600 rounded-xl transition-all ease-in duration-50"></div>
   </div>);
 };
