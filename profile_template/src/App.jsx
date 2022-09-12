@@ -31,6 +31,8 @@ const menuItems = [
 //   );
 // };
 
+const subMenuTabTitles = ["All", "Videos", "Notes", "To-do-list"];
+
 const MenuList = ({items, menuRef}) => {
   const decoratorSize = 24;
 
@@ -123,7 +125,7 @@ const MenuList = ({items, menuRef}) => {
         <svg className="fill-gray-100" viewBox="0 0 7 7"><path d="M 7 7 V 0 M 7 7 H 0 Q 6 6 7 0 Z"></path></svg>
       </div>
 
-      <div className="z-10 absolute bg-gray-100 rounded-l-2xl transition-all ease-in-out duration-75" style={ boxDecoratorStyles }></div>
+      <div className="z-10 absolute bg-gray-100 rounded-l-2xl transition-all ease-in-out duration-150" style={ boxDecoratorStyles }></div>
     </>
   );
 };
@@ -165,7 +167,7 @@ const FilterSwitch = () => {
   const containerRef = useRef();
 
   const [tabIndicatorStyles, setTabIndicatorStyles]  = useState({});
-  const [activeTab, setActiveTab] = useState(null);
+  const [activeTab, setActiveTab] = useState(1);
 
   const onActiveTabClick = (evt, opt) => {
     const { width, left } = evt.target.getBoundingClientRect();
@@ -180,17 +182,43 @@ const FilterSwitch = () => {
     })
   }, []);
 
-  return(<div ref={containerRef} className="relative flex text-sm font-semibold bg-gray-200 rounded-md">
-    <div className="z-20 py-2 px-4 cursor-pointer" onClick={(evt) => onActiveTabClick(evt, 1)}> Popular </div>
-    <div className="z-20 py-2 px-4 cursor-pointer" onClick={(evt) => onActiveTabClick(evt, 2)}> Recent </div>
-    <div style={ tabIndicatorStyles } className="absolute top-0 left-0 z-10 h-full bg-orange-600 rounded-md transition-all ease-in duration-50"></div>
+  return(<div ref={containerRef} className="relative flex text-sm h-min font-semibold bg-gray-200 rounded-xl">
+    <div className={`${activeTab == 1 ? 'text-white' : 'text-gray-500'} z-20 py-2 px-4 cursor-pointer`} onClick={(evt) => onActiveTabClick(evt, 1)}> Popular </div>
+    <div className={`${activeTab == 2 ? 'text-white' : 'text-gray-500'} z-20 py-2 px-4 cursor-pointer`} onClick={(evt) => onActiveTabClick(evt, 2)}> Recent </div>
+    <div style={ tabIndicatorStyles } className="absolute top-0 left-0 z-10 h-full bg-orange-600 rounded-xl transition-all ease-in duration-50"></div>
   </div>);
 };
 
 const SubTabs = () => {
-  return(
-    <p>Active tabs</p>
-  );
+  const [activeTab, setActiveTab] = useState(0);
+  const activeDecoratorRef = useRef();
+  const parentContainerRef = useRef();
+
+  const onActiveTabClick = (nodeElement, idx) => {
+    const { width, left, bottom } = nodeElement.getBoundingClientRect();
+    Object.assign(activeDecoratorRef.current.style, {
+      width: width + 'px',
+      left: left + 'px',
+      top: bottom + 'px'
+    });
+
+    setActiveTab(idx);
+  };
+
+  useEffect(() => {
+    onActiveTabClick(parentContainerRef.current.firstChild, 0);
+  }, []);
+
+  return (<>
+    <ul ref={parentContainerRef} className="flex justify-between font-medium tracking-wide">
+      {subMenuTabTitles.map((title, idx) => (
+        <li key={idx} className={`${idx == activeTab ? 'text-gray-800' : 'text-gray-500'} mx-1 px-2 py-2 cursor-pointer`} onClick={(evt) => onActiveTabClick(evt.target, idx)}>
+          { title }
+        </li>
+      ))}
+    </ul>
+    <div ref={activeDecoratorRef} className="transition-all ease-in duration-100 absolute bg-orange-600 h-1 rounded-md"></div>
+  </>);
 };
 
 const MainContent = () => {
@@ -212,7 +240,7 @@ const MainContent = () => {
         <div>Friends</div>
       </div>
 
-      <div className="flex flex-row justify-between flex-auto">
+      <div className="flex flex-row justify-between flex-auto my-12">
         <SubTabs />
         <FilterSwitch />
       </div>
